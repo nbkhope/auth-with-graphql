@@ -23,3 +23,5 @@ To run the app once, without nodemon:
 ```
 npm start
 ```
+
+To see the site, navigate to <http://localhost:4000/>
