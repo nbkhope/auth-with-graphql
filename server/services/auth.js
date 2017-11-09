@@ -81,4 +81,10 @@ function login({ email, password, req }) {
   });
 }
 
-module.exports = { signup, login };
+function logout(req) {
+  const { user } = req; // req.user
+  req.logout(); // provided by passport
+  return user;
+}
+
+module.exports = { signup, login, logout };
