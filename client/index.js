@@ -6,6 +6,7 @@ import { Router, hashHistory as history, Route, IndexRoute } from 'react-router'
 
 import App from './components/App';
 import Main from './components/Main';
+import LoginForm from './components/LoginForm';
 
 const networkInterface = createNetworkInterface({
   uri: '/graphql',
@@ -25,6 +26,7 @@ const Root = () => {
       <Router history={history}>
         <Route path="/" component={App}>
           <IndexRoute component={Main} />
+          <Route path="/login" component={LoginForm} />
         </Route>
       </Router>
     </ApolloProvider>
