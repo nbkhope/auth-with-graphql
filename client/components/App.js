@@ -1,10 +1,10 @@
 import React from 'react';
 
-import Navbar from './/Navbar';
+import Navbar from './Navbar';
 
-export default () => (
+export default (props) => (
   <div className="ui container">
     <Navbar />
-    Auth with GraphQL
+    {props.children}
   </div>
 );
