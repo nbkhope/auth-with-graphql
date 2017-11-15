@@ -3,13 +3,24 @@ import { graphql } from 'react-apollo';
 import { Link } from 'react-router';
 
 import query from '../queries/CurrentUser';
+import mutation from '../mutations/Logout';
 
-const renderAuthActions = ({ data }) => {
+const onLogoutClick = (props) => {
+  props.mutate({
+    refetchQueries: [
+      { query },
+    ],
+  });
+}
+
+const renderAuthActions = (props) => {
+  const { data } = props;
+
   if (data.loading) {
     return <div />;
   }
   else if (data.user) {
-    return <li><a href="#">Sign Out</a></li>;
+    return <li><a onClick={() => onLogoutClick(props)}>Sign Out</a></li>;
   }
 
   // else, if not logged in
@@ -33,4 +44,6 @@ const Navbar = (props) => {
   )
 };
 
-export default graphql(query)(Navbar);
+export default graphql(mutation)(
+  graphql(query)(Navbar)
+);
