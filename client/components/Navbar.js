@@ -1,5 +1,7 @@
 import React from 'react';
 import { graphql } from 'react-apollo';
+import { Link } from 'react-router';
+
 import query from '../queries/CurrentUser';
 
 const renderAuthActions = ({ data }) => {
@@ -12,8 +14,8 @@ const renderAuthActions = ({ data }) => {
 
   // else, if not logged in
   return [
-    <li key="signup"><a href="#">Sign Up</a></li>,
-    <li key="signin"><a href="#">Sign In</a></li>
+    <li key="signup"><Link to="/signup">Sign Up</Link></li>,
+    <li key="signin"><Link to="/login">Sign In</Link></li>
   ];
 };
 
