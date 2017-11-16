@@ -3,6 +3,7 @@ import { graphql } from 'react-apollo';
 
 import AuthForm from './AuthForm';
 import mutation from '../mutations/Signup';
+import query from '../queries/CurrentUser';
 
 class SignupForm extends Component {
   constructor(props) {
@@ -22,6 +23,9 @@ class SignupForm extends Component {
           email,
           password,
         },
+        refetchQueries: [
+          { query },
+        ]
       })
       .then(() => {
         this.props.router.push('/landing');
