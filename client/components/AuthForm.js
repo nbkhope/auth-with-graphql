@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class AuthForm extends Component {
   constructor(props) {
@@ -11,6 +12,7 @@ class AuthForm extends Component {
 
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   onEmailChange(event) {
@@ -23,7 +25,10 @@ class AuthForm extends Component {
 
   onSubmit(event) {
     event.preventDefault();
-    console.log('onSubmit');
+    this.props.onSubmit({
+      email: this.state.email,
+      password: this.state.password
+    });
   }
 
   render() {
@@ -42,5 +47,9 @@ class AuthForm extends Component {
     )
   }
 }
+
+AuthForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default AuthForm;
