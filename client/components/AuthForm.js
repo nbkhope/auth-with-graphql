@@ -31,6 +31,21 @@ class AuthForm extends Component {
     });
   }
 
+  renderSubmissionError() {
+    if (this.props.errors.length > 0) {
+      return (
+        <div className="card red">
+        <div className="card-content white-text">
+        <span className="card-title">There were errors with your submission:</span>
+        <ul>
+        {this.props.errors.map(error => <li key={error}>{error}</li>)}
+        </ul>
+        </div>
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
       <form onSubmit={this.onSubmit}>
@@ -43,6 +58,8 @@ class AuthForm extends Component {
           <input type="password" name="password" id="password" value={this.state.password} onChange={this.onPasswordChange} />
         </div>
         <button type="submit" className="btn">Submit</button>
+
+        {this.renderSubmissionError()}
       </form>
     )
   }
@@ -50,6 +67,7 @@ class AuthForm extends Component {
 
 AuthForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  errors: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default AuthForm;
