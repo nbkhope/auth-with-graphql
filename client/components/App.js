@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 export default (props) => (
   <div className="container">
-    <Navbar />
+    <Navbar onLogout={() => props.router.push('/')}/>
     {props.children}
   </div>
 );

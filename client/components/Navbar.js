@@ -10,7 +10,10 @@ const onLogoutClick = (props) => {
     refetchQueries: [
       { query },
     ],
-  });
+  })
+    .then(() => {
+      props.onLogout();
+    });
 }
 
 const renderAuthActions = (props) => {
