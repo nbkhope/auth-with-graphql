@@ -27,6 +27,10 @@ class LoginForm extends Component {
           }
         ],
       })
+      .then(() => {
+        console.log('Login ok');
+        this.props.router.push('/landing');
+      })
       .catch(error => {
         this.setState({
           errors: error.graphQLErrors.map(graphQLError => graphQLError.message)
