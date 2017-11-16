@@ -35,7 +35,7 @@ const Navbar = (props) => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <a href="#" className="brand-logo">Auth with GraphQL</a>
+        <a href="#" className="brand-logo"><i className="material-icons">account_circle</i>Auth with GraphQL</a>
         <ul id="nav-mobile" className="right hide-on-small-only">
           {renderAuthActions(props)}
         </ul>
