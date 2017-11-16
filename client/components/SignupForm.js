@@ -23,6 +23,9 @@ class SignupForm extends Component {
           password,
         },
       })
+      .then(() => {
+        this.props.router.push('/landing');
+      })
       .catch(error => {
         this.setState({
           errors: error.graphQLErrors.map(graphQLError => graphQLError.message),
