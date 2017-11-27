@@ -16,6 +16,12 @@ class SignupForm extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.data.user) {
+      this.props.router.push('/landing');
+    }
+  }
+
   onSubmit({ email, password }) {
     this.setState({ errors: [] }, () => {
       this.props.mutate({
@@ -28,7 +34,8 @@ class SignupForm extends Component {
         ]
       })
       .then(() => {
-        this.props.router.push('/landing');
+        // do this in componentWillUpdate instead
+        // this.props.router.push('/landing');
       })
       .catch(error => {
         this.setState({
@@ -50,4 +57,6 @@ class SignupForm extends Component {
   }
 }
 
-export default graphql(mutation)(SignupForm);
+export default graphql(query)(
+  graphql(mutation)(SignupForm)
+);
