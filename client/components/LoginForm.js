@@ -14,6 +14,14 @@ class LoginForm extends Component {
     };
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.data.user) {
+      console.log('Current user found. Already logged in, so redirecting to landing page');
+      this.props.router.push('/landing');
+      // or require('react-router').hashHistory.push()
+    }
+  }
+
   onSubmit({ email, password }) {
     this.setState({ errors: [] }, () => {
       this.props.mutate({
@@ -29,7 +37,9 @@ class LoginForm extends Component {
       })
       .then(() => {
         console.log('Login ok');
-        this.props.router.push('/landing');
+
+        // do this in componentWillUpdate instead
+        // this.props.router.push('/landing');
       })
       .catch(error => {
         this.setState({
@@ -51,4 +61,6 @@ class LoginForm extends Component {
   }
 }
 
-export default graphql(mutation)(LoginForm);
+export default graphql(query)(
+  graphql(mutation)(LoginForm)
+);
