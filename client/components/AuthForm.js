@@ -50,11 +50,11 @@ class AuthForm extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <div className="input-field">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" className={this.state.email ? 'active': ''}>Email</label>
           <input type="text" name="email" id="email" value={this.state.email} onChange={this.onEmailChange} />
         </div>
         <div className="input-field">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password" className={this.state.password ? 'active': ''}>Password</label>
           <input type="password" name="password" id="password" value={this.state.password} onChange={this.onPasswordChange} />
         </div>
         <button type="submit" className="btn">Submit</button>
