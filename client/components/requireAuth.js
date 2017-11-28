@@ -13,7 +13,13 @@ export default (WrappedComponent) => {
     }
 
     render() {
-      console.log('render requireAuth');
+      if (this.props.data.loading) {
+        return <div>Loading...</div>;
+      }
+      else if (!this.props.data.user) {
+        return <div>Unauthorized.</div>;
+      }
+
       return <WrappedComponent {...this.props} />;
     }
   }
