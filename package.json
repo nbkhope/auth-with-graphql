@@ -40,7 +40,7 @@
     "babel-preset-react": "^6.22.0",
     "html-webpack-plugin": "^2.26.0",
     "nodemon": "^1.12.1",
-    "webpack": "^2.2.0",
+    "webpack": "^3.8.1",
     "webpack-dev-middleware": "^1.9.0"
   }
 }
