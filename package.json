@@ -11,7 +11,7 @@
     "dev": "nodemon index.js --ignore client",
     "start": "node index.js"
   },
-  "author": "",
+  "author": "nbkhope",
   "license": "MIT",
   "dependencies": {
     "apollo-client": "^0.8.2",
